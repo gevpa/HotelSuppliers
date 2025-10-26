@@ -1,0 +1,58 @@
+# Hotel Suppliers Project
+
+## Technologies Used
+
+- **Back-end**: .NET 6 (ASP.NET Core) with Razor Pages
+- **Front-end**: HTML, CSS, JavaScript, Razor syntax
+- **Database**: Microsoft SQL Server 2019+
+- **ORM**: Entity Framework Core 6
+- **Additional Libraries**:
+  - AutoMapper
+  - FluentValidation
+  - Serilog (for logging)
+  - Microsoft Dependency Injection
+
+## System Requirements
+
+- Visual Studio 2022 (or newer version)
+- .NET 6 SDK
+- SQL Server 2019 or newer version
+- SQL Server Management Studio (optional)
+
+## Installation Instructions
+
+### 1. Database Setup
+
+1.  Open SQL Server Management Studio.
+2.  Create a new database named `DBSuppliers`.
+3.  Execute the SQL script located in the `DBSuppliers.sql` file (included in the project) to create the tables and initial data.
+
+### 2. Configure Connection String
+
+1.  Open the project in Visual Studio.
+2.  Edit the `appsettings.json` file.
+3.  Update the connection string in the `ConnectionStrings` section with your SQL Server credentials:
+
+    "ConnectionStrings": {
+    "DefaultConnection":
+    "Server=your_server_name; Database=DBSuppliers; Trusted_Connection=True; MultipleActiveResultSets=true"
+    }
+
+    _(Replace `your_server_name` with your SQL Server name)_
+
+### 3. Install Dependencies
+
+1.  Open the Package Manager Console.
+2.  Execute the command: `Update-Database`.
+
+### 4. Run the Application
+
+1.  Press F5 in Visual Studio to run the application.
+2.  The application will automatically open in your default browser.
+
+## Application Usage
+
+1.  On the Hotel Suppliers page, you will see the list of suppliers.
+2.  You can add a new supplier by clicking the "New Supplier" button.
+3.  To edit or delete an existing supplier, use the corresponding buttons in the list.
+4.  All required fields have validation and will display relevant error messages if a mistake occurs.
