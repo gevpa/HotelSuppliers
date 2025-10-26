@@ -1,0 +1,102 @@
+﻿@page "/SuppliersPages/Create"
+@model Suppliers.Pages.SuppliersPages.CreateModel
+@{
+}
+
+<form method="POST">
+    <div class="row mb-3">
+        <label for="name" class="col-md-1">Name</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="name" id="name" 
+            placeholder="Enter full name" value="@Model.SupplierInsertDTO.Name" />
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <label for="categoryid" class="col-md-1">CategoryId</label>
+        <div class="col-md-6">
+            @* <input type="text" class="form-control" name="categoryid" id="categoryid"
+            placeholder="Enter CategoryId" value="@Model.SupplierInsertDTO.CategoryId" /> *@
+            <select name="categoryid" id="categoryid">
+                <option value="1"> Food </option>
+                <option value="2"> Electronics </option>
+                <option value="3"> Room Equipment </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="afm" class="col-md-1">AFM</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="afm" id="afm"
+            placeholder="Enter AFM" value="@Model.SupplierInsertDTO.AFM" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="address" class="col-md-1">Address</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="address" id="address"
+            placeholder="Enter Address" value="@Model.SupplierInsertDTO.Address" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="phone" class="col-md-1">Phone</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="phone" id="phone"
+            placeholder="Enter Phone" value="@Model.SupplierInsertDTO.Phone" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="email" class="col-md-1">Email</label>
+        <div class="col-md-6">
+            <input type="email" class="form-control" name="email" id="email"
+            placeholder="Enter Email" value="@Model.SupplierInsertDTO.Email" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="countryid" class="col-md-1">CountryId</label>
+        <div class="col-md-6">
+            @* <input type="text" class="form-control" name="countryid" id="countryid"
+            placeholder="Enter CountryId" value="@Model.SupplierInsertDTO.CountryId" /> *@
+            <select name="countryid" id="countryid">
+                <option value="1"> Greece </option>
+                <option value="2"> Germany </option>
+                <option value="3"> Italy </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+    <label for="isactive" class="col-md-1">Is Active</label>
+    <div class="col-md-6">
+            <input type="checkbox" class="form-check-input" name="IsActive" id="isactive"
+                   value="true" @Model.SupplierInsertDTO.IsActive  />
+    </div>
+</div>
+    <div class="row mb-3">
+        <div class="offset-md-1 col-md-3 d-grid">
+            <button type="Submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class ="col-md-3 d-grid">
+            <a href="/SuppliersPages/getall" class="btn btn-outline-primary">Cancel</a>
+        </div>
+
+    </div>
+</form>
+
+<div>
+    @if (Model.ErrorArray.Count != 0)
+    {
+        @foreach(var error in Model.ErrorArray)
+        {
+            <div>
+                <p>@error.Message</p>
+            </div>
+        }
+    }
+</div>

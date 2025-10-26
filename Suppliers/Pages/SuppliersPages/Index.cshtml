@@ -1,0 +1,100 @@
+﻿@page "/SuppliersPages/getall"
+@model Suppliers.Pages.SuppliersPages.IndexModel
+@{
+}
+
+<h2 class="text-center mb-4">Hotel Suppliers</h2>
+<a class="btn btn-primary btn-lg mb-4" href="/SuppliersPages/Create">New Supplier</a>
+
+<table class="mx-auto table table-dark text-center">
+    <thead>
+        <tr><th colspan="10">Hotel Suppliers</th></tr>
+        <tr>
+            <th>SupplierId</th>
+            <th>Name</th>
+            <th>CategoryId</th>
+            <th>AFM</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>CountryId</th>
+            <th>IsActive</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.SuppliersDto.Count != 0)
+        {
+            @foreach(var supplier in Model.SuppliersDto)
+            {
+                <tr>
+                    <td>@supplier.SupplierId</td>
+                    <td>@supplier.Name</td>
+                    <td>
+                        @{
+
+                            string category = supplier.CategoryId switch
+
+                            {
+
+                                1 => "Food",
+
+                                2 => "Electronics",
+
+                                3 => "Room Equipment",
+
+                                _ => "Unknown"
+
+                            };
+
+                        }
+
+                        <p>@category</p>
+                    </td>
+                    <td>@supplier.AFM</td>
+                    <td>@supplier.Address</td>
+                    <td>@supplier.Phone</td>
+                    <td>@supplier.Email</td>
+                    <td>
+                        @{
+
+                            string country = supplier.CountryId switch
+
+                            {
+
+                                1 => "Greece",
+
+                                2 => "Germany",
+
+                                3 => "Italy",
+
+                                _ => "Unknown"
+
+                            };
+
+                        }
+
+                        <p>@country</p>
+
+                    </td>
+                    <td>@supplier.IsActive</td>
+                    <td>
+                        <a class="btn btn-primary" href="/SuppliersPages/@supplier.SupplierId/Update">Edit</a>
+                        <a class="btn btn-primary" href="javascript:void(0);" onclick="confirmDelete('@supplier.SupplierId')">Delete</a>
+                    </td>
+
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<div>
+    @if (Model.ErrorObj is not null)
+    {
+        <p>@Model.ErrorObj.Message</p>
+    }
+</div>
+
+<script src="~/js/supplier.js"></script>
